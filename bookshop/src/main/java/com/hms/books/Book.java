@@ -1,34 +1,17 @@
 package com.hms.books;
 
-public class Book {
+public class Book extends Product {
 
-    private String title;
-    private double price;
     private Author author;
     private Publisher publisher;
     private double saleDiscount;
+    static int bookCount = 0;
 
     public Book(String title, Author author, Publisher publisher, double price) {
-        this.title = title;
-        this.price = price;
+        super(title, price);
         this.author = author;
         this.publisher = publisher;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
+        bookCount += 1;
     }
 
     public Author getAuthor() {
@@ -59,6 +42,10 @@ public class Book {
         return (price - price * (saleDiscount / 100));
     }
 
+    public void printer() {
+        System.out.println(this);
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -68,4 +55,10 @@ public class Book {
                 ", publisher=" + publisher +
                 '}';
     }
+
+    public static int getCount() {
+        return bookCount;
+    }
+
+
 }
